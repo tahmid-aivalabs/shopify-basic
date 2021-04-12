@@ -13,6 +13,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/shopify', ROUTES)
+
+app.get('/', (req, res) => res.send('App installed successfully'))
+
 app.listen(config.server.port, () => {
   console.log(`App is running. URL: ${config.server.hostname}:${config.server.port}`)
 })
