@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
       const redirectUri = config.shopify.host + '/shopify/callback'
       const installUrl = `https://${shop}/admin/oauth/authorize?client_id=${config.shopify.key}&scope=${config.shopify.scopes}&state=${state}&redirect_uri=${redirectUri}`
       res.cookie('state', state, { sameSite: 'none', secure: true })
+      res.redirect(installUrl)
     }
     else {
       res.status(400).send('Query parameter shop is missing from the url')
